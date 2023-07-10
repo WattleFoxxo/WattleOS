@@ -2,4 +2,4 @@
  A hobby operating system written in rust
 
 ## Screenshots
- Shell
+![shell](https://raw.githubusercontent.com/WattleFoxxo/WattleOS/main/screenshots/shell.png)
