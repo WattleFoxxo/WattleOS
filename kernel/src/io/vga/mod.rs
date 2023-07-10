@@ -50,19 +50,7 @@ pub fn rect(x: usize, y: usize, w: usize, h: usize, colour: u32) {
 }
 
 pub fn char(x: usize, y: usize, fg_colour: u32, bg_colour: u32, c: char) {
-    /*let mut x_offset: usize = 0;
-    let mut y_offset: usize = 0;
-    for j in &font::cozette::DATA[0] {
-        y_offset += 1;
-        for bit in 0..8 {
-            x_offset += 1;
-            match *j & 1 << bit {
-                0 => {},
-                _ => pixel(x+x_offset, y+y_offset, fg_colour),
-            }
-        }
-        //println!()
-    }*/
+    
 }
 
 pub fn char_bitmap(x: usize, y: usize, size: usize, fg_colour: u32, bg_colour: u32, c: char) {

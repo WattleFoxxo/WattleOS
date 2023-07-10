@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Palette {
     pub clear: u32,
     pub black: u32,
@@ -19,7 +20,7 @@ pub struct Palette {
 }
 
 pub const Flat: Palette = Palette {
-    clear: 0x00_00_00_FF,
+    clear: 0x00_00_00_00,
     black: 0x2C_3E_50_FF,
     blue: 0x29_80_B9_FF,
     green: 0x27_AE_60_FF,

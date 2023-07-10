@@ -18,7 +18,7 @@ mod font_constants {
 }
 
 pub struct Config {
-	width: usize,
-	height: usize,
-	chars: usize,
+	pub width: usize,
+	pub height: usize,
+	pub chars: usize,
 }

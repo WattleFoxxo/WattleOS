@@ -5,12 +5,10 @@ use crossbeam_queue::{ArrayQueue, PopError};
 use futures_util::{stream::Stream, StreamExt};
 use pc_keyboard::{layouts, DecodedKey, HandleControl, Keyboard, ScancodeSet1, KeyCode};
 
-//use crate::framebuffer::FBWRITER;
-
 const SCANCODE_QUEUE_SIZE: usize = 128;
 
 static WAKER: AtomicWaker = AtomicWaker::new();
-static SCANCODE_QUEUE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
+pub static SCANCODE_QUEUE: OnceCell<ArrayQueue<u8>> = OnceCell::uninit();
 
 pub struct ScancodeStream;
 
@@ -56,11 +54,14 @@ pub(crate) fn add_scancode(scancode: u8) {
     }
 }
 
+//pub async fn print_keypresses() {}
+
 pub async fn print_keypresses() {
-    crate::println!("awaiting keypresses...");
+    //crate::println!("awaiting keypresses...");
     let mut scancodes = ScancodeStream::new();
-    let mut keyboard: Keyboard<layouts::Us104Key, ScancodeSet1> =
-        Keyboard::new(HandleControl::Ignore);
+    let mut keyboard: Keyboard<layouts::Us104Key, ScancodeSet1> = Keyboard::new(HandleControl::Ignore);
+
+    //let queue = messagequeue::get_message_queue();
 
     while let Some(scancode) = scancodes.next().await {
         if let Ok(Some(key_event)) = keyboard.add_byte(scancode) {
@@ -74,9 +75,7 @@ pub async fn print_keypresses() {
                             })
                         },
                         c => {
-                            //if c.is_alphanumeric(){
-                            crate::print!("{}", character);
-                            //}
+                            
                         }
                     }
                     DecodedKey::RawKey(key) => match key {
@@ -90,3 +89,4 @@ pub async fn print_keypresses() {
         }
     }
 }
+

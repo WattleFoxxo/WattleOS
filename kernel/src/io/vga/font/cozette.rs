@@ -1540,7 +1540,7 @@ pub const DATA: [[u8; 13]; 512] = [
 ];
 
 pub const CONFIG: Config = Config{
-	width: 6,
+	width: 7,
 	height: 13,
 	chars: 512,
 };
